@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	window.onload=function(){
+	    var send=document.getElementById('send'),
+	        times=10,
+	        timer=null;
+	    send.onclick=function(){
+	      // 计时开始 
+          send.disabled=true;
+          send.value=times+'秒后重试';
+       timer=window.setInterval(autoPlay,1000);
+
+         
+	    } 
+        
+        function autoPlay(){
+        times--;
+		if (times==0) {
+            send.value='发送验证码';
+            send.disabled=false;
+	    	clearInterval(timer);
+		}else
+        {
+            send.value=times+'秒后重试';
+        }
+		
+	}
+        
+	}
+    
+    
+	</script>
+</head>
+<body>
+	<input type="button" id="send" value="发送验证码">
+</body>
+</html>
